@@ -1,9 +1,24 @@
-import { selectorAll } from './Modules/functions.js';
-const BTNS = selectorAll('.btn');
-BTNS.forEach((element) => {
-    element.addEventListener('click', (event) => {
-        if (element.classList.contains('data-5')) {
-            console.log(element);
-        }
+// Functions
+import { numPad, mathOperator, mathResult, resetAll, clearEntry } from './Modules/functions.js';
+// Variables 
+import { OPERANDS, NUMBERS, OUTPUT_DISPLAY, OPERATORS, RESULT, CLEAR, CE } from './Modules/vars&types.js';
+NUMBERS.forEach((element) => {
+    element.addEventListener('click', () => {
+        numPad(element);
     });
+});
+OPERATORS.forEach((element) => {
+    element.addEventListener('click', () => {
+        mathOperator(element.innerHTML);
+    });
+});
+RESULT.addEventListener('click', () => {
+    mathResult();
+});
+CLEAR.addEventListener('click', () => {
+    resetAll();
+    OUTPUT_DISPLAY.innerHTML = `${OPERANDS['firstOperand']}`;
+});
+CE.addEventListener('click', () => {
+    clearEntry();
 });
