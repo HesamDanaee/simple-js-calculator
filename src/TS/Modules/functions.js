@@ -1,8 +1,9 @@
 // Imports
-// import {operator} from './types.js';
 import { OPERANDS, OUTPUT_DISPLAY } from './vars&types.js';
+// Exprots
+export { selector, selectorAll, resetOperators, numPad, mathOperator, mathResult, resetAll, clearEntry };
 // Destructured the OPERANDS var 
-let { firstOperand, secondOperand, currentValue, initialVal, operation, result, tempNum } = OPERANDS;
+let { firstOperand, secondOperand, currentValue, initialVal, operation, result } = OPERANDS;
 /**
  * findes a dom element and returns it
  * @param element - is selector(id,class or name in type of css) name
@@ -14,19 +15,20 @@ function selector(element) {
 function selectorAll(element) {
     return document.querySelectorAll(element);
 }
-/**
- * resets the values of operands to zero
- */
+// reset both operands to zero
 function resetOperators() {
     firstOperand = 0;
     secondOperand = 0;
 }
+//  uses currentValue as default to display on output
 function numDisplay() {
     OUTPUT_DISPLAY.innerHTML = `${currentValue || 0}`;
 }
+//  uses result parameter as argument to display it on output
 function displayResult(result) {
     OUTPUT_DISPLAY.innerHTML = `${result}`;
 }
+// Resets all the initial variables
 function resetAll() {
     firstOperand = 0;
     secondOperand = 0;
@@ -34,9 +36,7 @@ function resetAll() {
     currentValue = '';
     operation = '';
 }
-/**
- * calculates the operation based on chosen operation and displays it
- */
+//  calculates operands based on operation
 function calculation() {
     switch (operation) {
         case '*':
@@ -56,20 +56,16 @@ function calculation() {
             break;
     }
 }
-/**
- * saves input nums in one of OPERANDS properties and display it
- * @param element - is the input element
- */
+// sets the currentValue variable based on numpad
 function numPad(element) {
-    // Sets the value of element into currentValue
     currentValue += element.innerHTML;
+    // sets result value to false
     result = false;
-    // typeguard for currentValue
-    // update and display value of currentvalue to input
     numDisplay();
 }
 /**
- * act as ce button for clearing input or entry
+ * if - result is true resets invokes resetAll function
+ * if -
  */
 function clearEntry() {
     if (result) {
@@ -81,8 +77,11 @@ function clearEntry() {
         numDisplay();
     }
 }
+// defines firstOperand value and sets operation kind
 function mathOperator(sign) {
+    // Typegaurd for Typescript
     if (typeof currentValue === 'string') {
+        // sets the value of first operand if it's falsy
         if (!firstOperand) {
             firstOperand = +currentValue;
             initialVal = firstOperand;
@@ -121,5 +120,3 @@ function mathResult() {
         }
     }
 }
-// Exprot functions by their name to app.ts file
-export { selector, selectorAll, resetOperators, numPad, mathOperator, mathResult, resetAll, clearEntry };

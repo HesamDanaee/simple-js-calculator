@@ -7,7 +7,6 @@ const OPERANDS = {
     secondOperand: 0,
     currentValue: '',
     initialVal: 0,
-    tempNum: 0,
     operation: '',
     result: false
 };
