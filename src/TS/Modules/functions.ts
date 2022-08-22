@@ -29,7 +29,21 @@ function selectorAll(element:string) {
 
 //  uses currentValue as default to display on output
  function numDisplay():void {
-   OUTPUT_DISPLAY.innerHTML = `${currentValue || 0}`;
+   OUTPUT_DISPLAY.innerHTML = `${inputShorter(`${currentValue}`) || 0}`;
+ }
+
+//  decimals the result to 10
+ function resultShorter(num:string) {
+  return num.length > 10?
+      num.slice(0,10)
+      :num
+ }
+
+//  decimals and shorten the inputnum
+ function inputShorter(num:string) {
+    return num.length > 7
+    ? num = num.slice(0,9) + '...'
+    : num;
  }
 
  function opDisplay(ex1:number,ex2?:number,operator?:string):void {
@@ -41,7 +55,7 @@ function selectorAll(element:string) {
 
 //  uses result parameter as argument to display it on output
  function displayResult(result:string):void {
-  OUTPUT_DISPLAY.innerHTML = `${Number(result).toFixed(10)}`
+  OUTPUT_DISPLAY.innerHTML = `${resultShorter(result)}`;
  }
 
 // Resets all the initial variables

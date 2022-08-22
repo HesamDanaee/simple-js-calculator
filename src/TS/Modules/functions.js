@@ -22,7 +22,19 @@ function resetOperators() {
 }
 //  uses currentValue as default to display on output
 function numDisplay() {
-    OUTPUT_DISPLAY.innerHTML = `${currentValue || 0}`;
+    OUTPUT_DISPLAY.innerHTML = `${inputShorter(`${currentValue}`) || 0}`;
+}
+//  decimals the result to 10
+function resultShorter(num) {
+    return num.length > 10 ?
+        num.slice(0, 10)
+        : num;
+}
+//  decimals and shorten the inputnum
+function inputShorter(num) {
+    return num.length > 7
+        ? num = num.slice(0, 9) + '...'
+        : num;
 }
 function opDisplay(ex1, ex2, operator) {
     EX_DISPLAY.innerHTML = `${ex1}  ${operator || ''} ${ex2 || ''}`;
@@ -32,7 +44,7 @@ function opDisplay(ex1, ex2, operator) {
 }
 //  uses result parameter as argument to display it on output
 function displayResult(result) {
-    OUTPUT_DISPLAY.innerHTML = `${Number(result).toFixed(10)}`;
+    OUTPUT_DISPLAY.innerHTML = `${resultShorter(result)}`;
 }
 // Resets all the initial variables
 function resetAll() {
