@@ -122,7 +122,7 @@ if(typeof currentValue === 'string') {
 // sets the value of second operand and calculates the result
 function mathResult() {   
   // if firstOperand and currentValue are true set the secondOperand and clear the currentVlue
-  if(firstOperand && currentValue) {
+  if(firstOperand || firstOperand >= 0 && currentValue) {
     if(typeof currentValue === 'string') {
       secondOperand = +currentValue;
       currentValue = '';
