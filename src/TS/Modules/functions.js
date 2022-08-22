@@ -32,7 +32,7 @@ function opDisplay(ex1, ex2, operator) {
 }
 //  uses result parameter as argument to display it on output
 function displayResult(result) {
-    OUTPUT_DISPLAY.innerHTML = `${result}`;
+    OUTPUT_DISPLAY.innerHTML = `${Number(result).toFixed(10)}`;
 }
 // Resets all the initial variables
 function resetAll() {

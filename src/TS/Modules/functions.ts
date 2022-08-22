@@ -41,7 +41,7 @@ function selectorAll(element:string) {
 
 //  uses result parameter as argument to display it on output
  function displayResult(result:string):void {
-  OUTPUT_DISPLAY.innerHTML = `${result}`
+  OUTPUT_DISPLAY.innerHTML = `${Number(result).toFixed(10)}`
  }
 
 // Resets all the initial variables

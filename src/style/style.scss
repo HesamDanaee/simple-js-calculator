@@ -1,4 +1,6 @@
 @use 'partials/index' as *;
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -11,13 +13,15 @@
 }
 
 body {
-    @include WH(100vw, 100vh);
+    @include WH(100vw,
+    100vh);
     @include Flex;
     background: rgb(228, 228, 228);
 }
 
 .container {
-    @include WH(350px, 500px);
+    @include WH(350px,
+    500px);
     @include Flex;
     background: $Absolute-White;
     border-radius: .6em;
@@ -26,16 +30,23 @@ body {
 }
 
 .wrapper {
-    @include WH(100%, 100%);
+    @include WH(100%,
+    100%);
     // Up section of wrapper
     .up-section {
-        @include WH(100%, 30%);
-        @include Flex(flex-end, center, column);
+        @include WH(100%,
+        30%);
+        @include Flex(flex-end,
+        center,
+        column);
         border-radius: .6em .6em 0 0;
         background: $Primary-Color;
         .display {
-            @include WH(100%, 95px);
-            @include Flex(space-between, flex-end, column);
+            @include WH(100%,
+            95px);
+            @include Flex(space-between,
+            flex-end,
+            column);
             padding: .4em 2em;
             margin-bottom: .4em;
             color: $Absolute-White;
@@ -52,22 +63,30 @@ body {
     }
     // Down section of wrapper
     .down-section {
-        @include WH(100%, 70%);
+        @include WH(100%,
+        70%);
         .inner-wrapper {
-            @include WH(100%, 100%);
-            @include Flex(space-between, center, row);
+            @include WH(100%,
+            100%);
+            @include Flex(space-between,
+            center,
+            row);
         }
         .left-part {
-            @include WH(50%, 100%);
-            @include Grid(repeat(2, 1fr), repeat(5, 1fr));
+            @include WH(50%,
+            100%);
+            @include Grid(repeat(2, 1fr),
+            repeat(5, 1fr));
             grid-gap: .2em;
             justify-items: center;
             align-items: center;
             padding: .5em 0;
         }
         .right-part {
-            @include WH(50%, 100%);
-            @include Grid(repeat(2, 1fr), repeat(5, 1fr));
+            @include WH(50%,
+            100%);
+            @include Grid(repeat(2, 1fr),
+            repeat(5, 1fr));
             grid-gap: .2em;
             justify-items: center;
             align-items: center;
@@ -78,7 +97,8 @@ body {
 
 // Button Style
 .btn {
-    @include WH(55px, 55px);
+    @include WH(55px,
+    55px);
     @include Flex;
     border-radius: 50%;
     border: none;
@@ -110,7 +130,8 @@ body {
 }
 
 #equal {
-    @include WH(142.2px, 55px);
+    @include WH(142.2px,
+    55px);
     grid-column: 1/3;
     border-radius: 3em;
     color: $Absolute-White;
@@ -123,9 +144,11 @@ body {
         overflow: hidden;
     }
     .container {
-        @include WH(300px, 500px);
+        @include WH(300px,
+        500px);
     }
     .btn {
-        @include WH(52px, 52px);
+        @include WH(52px,
+        52px);
     }
 }
