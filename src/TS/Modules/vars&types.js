@@ -17,4 +17,4 @@ const RESULT = selector('#equal');
 const CLEAR = selector('.data-c');
 const CE = selector('.data-ce');
 const OUTPUT_DISPLAY = selector('.display h2');
-const EX_DISPLAY = selector('.display h3');
+const EX_DISPLAY = selector('.display h4');
