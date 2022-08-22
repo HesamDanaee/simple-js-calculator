@@ -1,12 +1,11 @@
 // Imports
-import {OPERANDS,OUTPUT_DISPLAY} from './vars&types.js'
+import {OPERANDS,OUTPUT_DISPLAY,EX_DISPLAY} from './vars&types.js'
 
 // Exprots
 export {selector,selectorAll,resetOperators,numPad,mathOperator,mathResult,resetAll,clearEntry};
 
 // Destructured the OPERANDS var 
- let {firstOperand,secondOperand,currentValue,initialVal,operation,result} = OPERANDS;
-
+ let {firstOperand,secondOperand,currentValue,operation,result} = OPERANDS;
 
 /**
  * findes a dom element and returns it
@@ -33,6 +32,13 @@ function selectorAll(element:string) {
    OUTPUT_DISPLAY.innerHTML = `${currentValue || 0}`;
  }
 
+ function opDisplay(ex1:number,ex2?:number,operator?:string):void {
+  EX_DISPLAY.innerHTML = `${ex1}  ${operator || ''} ${ex2 || ''}`;
+  if(result && secondOperand) {
+    EX_DISPLAY.innerHTML += ' =';
+  }
+ }
+
 //  uses result parameter as argument to display it on output
  function displayResult(result:string):void {
   OUTPUT_DISPLAY.innerHTML = `${result}`
@@ -42,7 +48,6 @@ function selectorAll(element:string) {
  function resetAll() {
   firstOperand = 0;
   secondOperand = 0;
-  initialVal = 0;
   currentValue = '';  
   operation = '';
  }
@@ -58,9 +63,11 @@ function selectorAll(element:string) {
   }
  }
 
-
 // sets the currentValue variable based on numpad
 function numPad(element:Element) {
+  if(result) {
+    EX_DISPLAY.innerHTML = `${currentValue}`;
+   }
   currentValue += element.innerHTML;
   // sets result value to false
   result = false;
@@ -69,11 +76,10 @@ function numPad(element:Element) {
 
 /**
  * if - result is true resets invokes resetAll function
- * if - 
+ * else - just resets the currentValue
  */
 function clearEntry() { 
-   if(result) {
-    resetAll();
+   if(result) { 
     numDisplay();
    } else {
     currentValue = '';
@@ -81,48 +87,56 @@ function clearEntry() {
    }
 }
 
-
 // defines firstOperand value and sets operation kind
 function mathOperator(sign:string) {
+  // set result value to false and clears the expression output
+  if(result) {
+    EX_DISPLAY.innerHTML = '';
+    result = false;
+  }
 
   // Typegaurd for Typescript
 if(typeof currentValue === 'string') {
   // sets the value of first operand if it's falsy
   if(!firstOperand) {
     firstOperand = +currentValue;
-    initialVal = firstOperand;
     currentValue = '';
   } 
 }
-  // checks if operation is defined and operation key is pressed for second time
-  // and calculate the operation without pressing equal button
+  // set operation sign if undefined
   if(!operation) {
     operation = `${sign}`;
   }
+  // calculate the result if operation and currentVlue are true
   if(operation && currentValue) {
     mathResult();
+  }
+  // change the operation sign
+  if(operation) {
     operation = `${sign}`;
   }
+
+  opDisplay(firstOperand,secondOperand,operation);
 }
 
+// sets the value of second operand and calculates the result
 function mathResult() {   
+  // if firstOperand and currentValue are true set the secondOperand and clear the currentVlue
   if(firstOperand && currentValue) {
     if(typeof currentValue === 'string') {
       secondOperand = +currentValue;
-      initialVal = 0;
       currentValue = '';
     }
-  } else if(firstOperand && currentValue !== 0 && initialVal !== 0) {
-       if(typeof initialVal === 'number') {
-        secondOperand = +initialVal;
-       }
   }
+  // if upper condition is true and secondOperand is assigned
+  //calculate the result 
    if(secondOperand) {
     if(typeof currentValue === 'string') {
       calculation();
-      firstOperand = +OUTPUT_DISPLAY.innerHTML;
-      secondOperand = 0;
       result = true;
+      opDisplay(firstOperand,secondOperand,operation);
+      firstOperand = +OUTPUT_DISPLAY.innerHTML;
+      secondOperand = 0;      
     }
    }
 }

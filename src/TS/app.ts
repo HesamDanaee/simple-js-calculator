@@ -1,7 +1,7 @@
 // Functions
 import {numPad,mathOperator,mathResult,resetAll,clearEntry} from './Modules/functions.js';
 // Variables 
-import {OPERANDS,NUMBERS,OUTPUT_DISPLAY,OPERATORS,RESULT,CLEAR,CE} from './Modules/vars&types.js';
+import {OPERANDS,NUMBERS,OUTPUT_DISPLAY,OPERATORS,RESULT,CLEAR,CE,EX_DISPLAY} from './Modules/vars&types.js';
 
 
 // Adding numPad function to all number buttons
@@ -28,6 +28,7 @@ RESULT.addEventListener('click',()=> {
 CLEAR.addEventListener('click',()=> {
     resetAll();
     OUTPUT_DISPLAY.innerHTML = `${OPERANDS['firstOperand']}`;
+    EX_DISPLAY.innerHTML = '';
 });
 
 // adds clearEntry button to ce button

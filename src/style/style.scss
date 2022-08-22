@@ -34,10 +34,10 @@ body {
         border-radius: .6em .6em 0 0;
         background: $Primary-Color;
         .display {
-            @include WH(100%, 50px);
-            @include Flex(flex-end, center, row);
+            @include WH(100%, 90px);
+            @include Flex(space-between, flex-end, column);
             padding: .4em 2em;
-            margin-bottom: 1.4em;
+            margin-bottom: .4em;
             color: $Absolute-White;
             h2 {
                 font-size: 2.5rem;

@@ -1,5 +1,5 @@
 export {operator,Operands};
-export {NUMBERS,OPERANDS,OUTPUT_DISPLAY,OPERATORS,RESULT,CLEAR,CE};
+export {NUMBERS,OPERANDS,OUTPUT_DISPLAY,OPERATORS,RESULT,CLEAR,CE,EX_DISPLAY};
 import { selector, selectorAll } from "./functions.js";
 // Types
 // Math operation functions type
@@ -35,3 +35,4 @@ const CLEAR = selector('.data-c');
 const CE = selector('.data-ce');
 
 const OUTPUT_DISPLAY = selector('.display h2');
+const EX_DISPLAY = selector('.display h3');
